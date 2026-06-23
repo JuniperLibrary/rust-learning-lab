@@ -62,6 +62,6 @@ Progressive Rust learning: variables → ownership → borrowing → enum/match 
 3. **每一课结束后必须提交代码**：用 `git commit` 提交当课的所有改动，commit message 格式为 `docs: 第X课 - <课程主题>`
 
 ### 学习路径编排
-- 严格按照 TODO.md 的五阶段路线图推进
-- 阶段一 → 阶段二 → 阶段三（不跳顺序）
-- 语⾔基础未学完前，不引入外部 crate 做依赖
+- 严格按照 TODO.md 的六阶段路线图推进（阶段零 → 阶段五）
+- 阶段零 → 阶段一 → 阶段二 → 阶段三（不跳顺序）
+- 语⾔基础未学完前（阶段零未完成前），不进入后续进阶内容
