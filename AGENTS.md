@@ -1,0 +1,67 @@
+# AGENTS.md — rust-learning-lab
+
+Personal Rust learning playground. Not production code.
+
+## Project structure
+
+```
+Cargo.toml          # single crate, edition = "2024", only dep: clap 4.5 (derive)
+src/
+  main.rs           # default binary — Rust tutorial exercises (heavily commented)
+  bin/
+    hero.rs         # extra binary: struct + trait examples
+    advanced.rs     # extra binary: generics + iterators + closures
+docs/               # learning notes in Chinese (8 completed topics)
+test*.txt           # sample text files for the commented-out word counter
+```
+
+## Key commands
+
+```bash
+cargo run                     # run default binary (src/main.rs)
+cargo run --bin hero          # run hero.rs
+cargo run --bin advanced      # run advanced.rs
+cargo check                   # quick compile check (faster than build)
+```
+
+## Important facts
+
+- **Edition 2024** — requires Rust ≥ 1.85. Current toolchain: 1.91.0.
+- **No tests.** No `#[test]` or `#[cfg(test)]` anywhere in the repo.
+- **No CI, no Makefile, no formatter/linter config.** The project uses defaults.
+- **Dead code warnings are expected** — commented-out code blocks are intentional teaching examples. `cargo check` will emit `#[warn(dead_code)]`.
+- **All source files are heavily commented in Chinese** — the .rs files ARE the learning material. Do not strip comments.
+- **The main.rs word-counter code is commented out** (`/* ... */` block), replaced by Rust basics tutorial code. This is intentional.
+- **No workspace** — single package despite git history mentioning workspace renames.
+- **Only runtime dependency:** `clap 4.5` with `derive` feature (used by the commented-out word counter).
+
+## What this repo is for
+
+Progressive Rust learning: variables → ownership → borrowing → enum/match → struct → trait → generics → iterators/closures. Each concept has runnable code + a matching doc note in `docs/01-基础/`.
+
+## 用户协作规范（首次对话请先阅读此处）
+
+### 沟通风格
+- 全程**中文**交流
+- 语言简洁直接，不要客套/寒暄/表扬
+- 不要一次性给出全部信息，要**步步引导**
+
+### 教学模式（核心 — 不遵守会被纠正）
+1. **先动手，后讲原理** — 先让用户运行现有代码、观察现象，再解释 Why
+2. **一次只教一个概念** — 不超前引入未学过的知识点
+3. **不要直接给答案** — 用提问引导用户自己发现模式
+4. **每一步都要用户动手写/改代码**，不能只是阅读
+5. 学习新的 crate（如 `thiserror`）时，用 `cargo add` 添加依赖，让用户感受 Rust 的工具链
+
+### 文档输出与提交规范（每次必做）
+1. **每一课都要输出**：
+   - `docs/` 下的对应笔记文件（如 `docs/01-基础/09-错误处理.md`）
+   - 文件格式遵循已有笔记风格：是什么 → 怎么用 → 为什么 → 常见坑
+   - 学习过程回顾总结（放在笔记末尾或单独说明）
+2. 用 `todowrite` 管理学习进度，一课一个 todo，完成后立即标记
+3. **每一课结束后必须提交代码**：用 `git commit` 提交当课的所有改动，commit message 格式为 `docs: 第X课 - <课程主题>`
+
+### 学习路径编排
+- 严格按照 TODO.md 的五阶段路线图推进
+- 阶段一 → 阶段二 → 阶段三（不跳顺序）
+- 语⾔基础未学完前，不引入外部 crate 做依赖
