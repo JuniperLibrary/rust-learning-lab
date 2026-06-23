@@ -19,6 +19,43 @@ fn main() {
     let result = get_largest(&char_list);
     println!("最大的字符是: {}", result);
 
+    /*
+        第二关：迭代器与闭包 (Iterators & Closures) —— 优雅的“流水线”
+            这是 Rust 中最迷人、最常用的语法，体现了 Rust 函数式编程的一面。
+            假设有一个需求：“把一个数字列表里的偶数挑出来，每个乘以 2，然后求总和。”
+            传统的写法是用 for 循环：
+    */
+    let numbers = vec![34, 50, 25, 100, 65];
+    let mut sum = 0;
+    for n in &numbers {
+        if n % 2 == 0 {
+            sum += n;
+        }
+    }
+
+    /*
+        这在 Rust 里能跑，但不够“Rust”。Rust 程序员更喜欢用迭代器链，一行代码搞定：
+    */
+    let numbers2 = vec![1, 2, 3, 4, 5, 6];
+
+    // 魔法开始了！
+    // 1. iter()：把列表变成迭代器（流水线）
+    // 2. filter(|&x| ...)：闭包。|x| 是参数，x % 2 == 0 是返回值。只保留偶数。
+    // 3. map(|x| ...)：闭包。把挑出来的偶数乘以 2。
+    // 4. sum()：把流水线上的结果加起来。
+    let sum: i32 = numbers2.iter()
+        .filter(|&x| x % 2 == 0)
+        .map(|x| x * 2)
+        .sum();
+
+    println!("最终的总和是: {}", sum); // 输出应该是 24 (2*2 + 4*2 + 6*2)
+
+    /*
+        什么是闭包 Closure?
+            注意 |x| x % 2 这个奇怪的语法。
+            他是一个匿名函数 类似于java的lambda，或 JS的箭头函数 (x) => x * 2
+            竖线 || 里面是参数，后面是代码体。极其简洁，专门配合迭代器使用
+    */
 
 }
 
