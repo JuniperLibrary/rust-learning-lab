@@ -5,22 +5,33 @@ Personal Rust learning playground. Not production code.
 ## Project structure
 
 ```
-Cargo.toml          # single crate, edition = "2024", only dep: clap 4.5 (derive)
+Cargo.toml          # single crate, edition = "2024", default-run = "s0-data-types"
 src/
-  main.rs           # default binary — Rust tutorial exercises (heavily commented)
+  main.rs           # fallback binary — just prints available --bin options
   bin/
-    hero.rs         # extra binary: struct + trait examples
-    advanced.rs     # extra binary: generics + iterators + closures
-docs/               # learning notes in Chinese (8 completed topics)
+    阶段零/           # Stage 0: Foundation (basic data types, control flow, etc.)
+      01-基础数据类型.rs  # cargo run --bin s0-data-types
+      02-复合类型.rs      # (pending)
+      03-控制流.rs        # (pending)
+      04-字符串深入.rs    # (pending)
+      05-类型转换.rs      # (pending)
+      06-常用集合.rs      # (pending)
+    阶段一/           # Stage 1: Error handling & advanced control flow (pending)
+    hero.rs         # struct + trait examples —— cargo run --bin hero
+    advanced.rs     # generics + iterators + closures —— cargo run --bin advanced
+docs/               # learning notes in Chinese (9 completed topics)
 test*.txt           # sample text files for the commented-out word counter
 ```
+
+Binary names use English identifiers (e.g. `s0-data-types`) for easy CLI entry, while file paths are in Chinese for readability.
 
 ## Key commands
 
 ```bash
-cargo run                     # run default binary (src/main.rs)
-cargo run --bin hero          # run hero.rs
-cargo run --bin advanced      # run advanced.rs
+cargo run                     # run default binary (currently s0-data-types)
+cargo run --bin s0-data-types # Stage 0: 基础数据类型
+cargo run --bin hero          # struct + trait examples
+cargo run --bin advanced      # generics + iterators + closures
 cargo check                   # quick compile check (faster than build)
 ```
 
@@ -31,13 +42,19 @@ cargo check                   # quick compile check (faster than build)
 - **No CI, no Makefile, no formatter/linter config.** The project uses defaults.
 - **Dead code warnings are expected** — commented-out code blocks are intentional teaching examples. `cargo check` will emit `#[warn(dead_code)]`.
 - **All source files are heavily commented in Chinese** — the .rs files ARE the learning material. Do not strip comments.
-- **The main.rs word-counter code is commented out** (`/* ... */` block), replaced by Rust basics tutorial code. This is intentional.
 - **No workspace** — single package despite git history mentioning workspace renames.
-- **Only runtime dependency:** `clap 4.5` with `derive` feature (used by the commented-out word counter).
+- **Runtime deps:** `clap 4.5` (derive) + `thiserror 2.x`.
 
 ## What this repo is for
 
 Progressive Rust learning: variables → ownership → borrowing → enum/match → struct → trait → generics → iterators/closures. Each concept has runnable code + a matching doc note in `docs/01-基础/`.
+
+## Binary naming convention
+
+Binary names use English identifiers for easy CLI entry:
+- `s0-data-types` → `src/bin/阶段零/01-基础数据类型.rs`
+- `s0-` prefix = Stage 0 (阶段零)
+- `s1-` prefix = Stage 1 (阶段一), etc.
 
 ## 用户协作规范（首次对话请先阅读此处）
 

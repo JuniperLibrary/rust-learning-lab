@@ -2,9 +2,22 @@
 name = "rust-learning-lab"
 version = "0.1.0"
 edition = "2024"
+default-run = "s0-data-types"
 
 [dependencies]
 clap = { version = "4.5", features = ["derive"] }
 thiserror = "2.0.18"
 
 # features = ["derive"] 是为了启用 clap 的宏派生功能，这能让我们用极少的代码实现强大的命令行解析（这就是 Rust 零成本抽象和宏魅力的体现！）
+
+[[bin]]
+name = "s0-data-types"
+path = "src/bin/阶段零/01-基础数据类型.rs"
+
+[[bin]]
+name = "hero"
+path = "src/bin/hero.rs"
+
+[[bin]]
+name = "advanced"
+path = "src/bin/advanced.rs"
