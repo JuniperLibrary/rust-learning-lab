@@ -15,6 +15,10 @@ name = "s0-data-types"
 path = "src/bin/阶段零/01-基础数据类型.rs"
 
 [[bin]]
+name = "s0-compound-types"
+path = "src/bin/阶段零/02-复合类型.rs"
+
+[[bin]]
 name = "hero"
 path = "src/bin/hero.rs"
 
